@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vu Duc Hoang - Portfolio</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <main class="main">
+        <div class="container">
+            <!-- Intro Component -->
+            <div id="intro-placeholder"></div>
+
+            <!-- Featured Projects Grid -->
+            <section class="featured-projects">
+                <h2><i class="fas fa-star"></i> Featured Projects</h2>
+                <div class="projects-grid">
+                    
+                    <!-- Automation Testing Project -->
+                    <a href="projects/automation-testing.html" class="project-card-link">
+                        <div class="project-card featured">
+                            <div class="project-image">
+                                <i class="fas fa-shield-alt project-icon"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3>Altoro Bank Security Audit</h3>
+                                <p>Comprehensive security testing & automation suite for banking system vulnerability assessment</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag python">Python</span>
+                                    <span class="tech-tag selenium">Playwright</span>
+                                    <span class="tech-tag">Security Testing</span>
+                                </div>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-bug"></i> 4 Vulnerabilities</span>
+                                    <span><i class="fas fa-database"></i> 16 CSV Exports</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- VNExpress News Crawler -->
+                    <a href="projects/vnexpress-news.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <i class="fas fa-newspaper project-icon"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3>VNExpress News Scraper</h3>
+                                <p>Automated news category extraction & classification system for VNExpress.net</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag python">Python</span>
+                                    <span class="tech-tag selenium">Selenium</span>
+                                    <span class="tech-tag bs4">BeautifulSoup</span>
+                                </div>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-list"></i> Categories</span>
+                                    <span><i class="fas fa-file-csv"></i> CSV Export</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- BBC Article Converter -->
+                    <a href="projects/bbc-converter.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <i class="fas fa-file-word project-icon"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3>BBC Article to DOCX</h3>
+                                <p>Advanced web scraper converting BBC articles to formatted Word documents with images</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag python">Python</span>
+                                    <span class="tech-tag bs4">BeautifulSoup</span>
+                                    <span class="tech-tag docx">python-docx</span>
+                                </div>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-images"></i> Image Support</span>
+                                    <span><i class="fas fa-file-word"></i> DOCX Format</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Wikipedia Table Scraper -->
+                    <a href="projects/wiki-table.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <i class="fas fa-table project-icon"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3>Wikipedia Table Extractor</h3>
+                                <p>Automated Olympic medal table extraction and CSV export from Wikipedia</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag python">Python</span>
+                                    <span class="tech-tag bs4">BeautifulSoup</span>
+                                    <span class="tech-tag csv">CSV Processing</span>
+                                </div>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-trophy"></i> Olympic Data</span>
+                                    <span><i class="fas fa-table"></i> Table Parsing</span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- THPT Exam Scores -->
+                    <a href="projects/vnexpress-scores.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <i class="fas fa-graduation-cap project-icon"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3>THPT Exam Score Crawler</h3>
+                                <p>Mass data collection system for Vietnamese high school graduation exam results</p>
+                                <div class="tech-tags">
+                                    <span class="tech-tag python">Python</span>
+                                    <span class="tech-tag requests">Requests</span>
+                                    <span class="tech-tag">Mass Scraping</span>
+                                </div>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-users"></i> Mass Data</span>
+                                    <span class="fas fa-chart-line"></i> Analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Add More Project Card -->
+                    <div class="project-card add-more" onclick="showAllProjects()">
+                        <div class="project-image">
+                            <i class="fas fa-plus-circle project-icon"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>View All Projects</h3>
+                            <p>Explore my complete portfolio of web scraping, automation, and data analysis projects</p>
+                            <div class="view-all-btn">
+                                <span>View Portfolio <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Overview -->
+            <section class="skills-overview">
+                <h2><i class="fas fa-code"></i> Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <i class="fas fa-spider"></i>
+                        <h3>Web Scraping</h3>
+                        <p>Advanced scraping with Selenium, BeautifulSoup, Playwright for complex web applications</p>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security Testing</h3>
+                        <p>Vulnerability assessment, penetration testing, and automated security auditing</p>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-database"></i>
+                        <h3>Data Processing</h3>
+                        <p>ETL pipelines, data cleaning, CSV/Excel processing, and structured data export</p>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-robot"></i>
+                        <h3>Automation</h3>
+                        <p>Process automation, testing frameworks, and scalable automation solutions</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Additional Projects Modal (for extensibility) -->
+    <div id="additional-projects" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>All Projects</h2>
+            <div id="all-projects-container"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

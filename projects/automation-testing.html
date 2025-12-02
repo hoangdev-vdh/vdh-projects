@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Automation Testing Altoro Mutual Bank</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main">
+        <div class="container">
+            <!-- Intro Section -->
+            <div id="intro-placeholder"></div>
+
+            <!-- Main Project -->
+            <section class="project-showcase">
+                <div class="project-card">
+                    <h3><i class="fas fa-bank"></i> Altoro Mutual Bank - http://demo.testfire.net/login.jsp</h3>
+                    
+                    <div class="image-section">
+                        <h4>Website gốc:</h4>
+                        <div class="website-image">
+                            <img src="../assets/images/automation_demotestfire/tables_web.png" alt="Altoro Mutual Bank Website">
+                            <p class="image-caption">Trang demo ngân hàng Altoro Mutual với giao diện và chức năng cơ bản</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Overview -->
+                    <div class="image-section">
+                        <h4><i class="fas fa-info-circle"></i> Tổng quan dự án</h4>
+                        <p>Dự án automation testing toàn diện cho website demo ngân hàng Altoro Mutual (demo.testfire.net), 
+                        thực hiện kiểm tra bảo mật, thu thập dữ liệu và đánh giá lỗ hổng bảo mật một cách tự động.</p>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span class="stat-number">20</span>
+                            <span class="stat-label">Credential Tests</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-shield-virus"></i>
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Security Tests</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-database"></i>
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Data Categories</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-file-csv"></i>
+                            <span class="stat-number">16</span>
+                            <span class="stat-label">CSV Exports</span>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="code-section">
+                        <h4><i class="fas fa-cogs"></i> Tính năng chính</h4>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-python"># Các tính năng chính của hệ thống
+features = {
+    "Security Testing": [
+                        "XSS Vulnerability Detection",
+                        "SQL Injection Testing", 
+                        "CSRF Protection Check",
+                        "Session Security Analysis"
+    ],
+    "Data Scraping": [
+                        "Balance Detail Extraction",
+                        "Recent Transactions Export",
+                        "Credits/Debits Analysis",
+                        "Multi-Account Support"
+    ],
+    "Automation": [
+                        "Automated Login Testing",
+                        "Credential Brute Force",
+                        "Video Recording",
+                        "CSV Export Generation"
+    ],
+    "Reporting": [
+                        "Detailed Security Reports",
+                        "User-specific Data Export",
+                        "Comprehensive Audit Logs",
+                        "Error Tracking"
+    ]
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Main Code Structure -->
+                    <div class="code-section">
+                        <h4><i class="fas fa-file-code"></i> Main Audit Script (main_audit.py)</h4>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-python">from playwright.sync_api import sync_playwright
+from data.credentials import CREDENTIALS_LIST
+from pages.login_page import LoginPage
+from pages.account_page import AccountPage
+from pages.security_page import SecurityPage
+
+def run_security_audit():
+    with sync_playwright() as p:
+        # Khởi tạo browser với video recording
+        browser = p.chromium.launch(headless=False, slow_mo=500) 
+        context = browser.new_context(record_video_dir="data/videos/")
+        page = context.new_page()
+
+        login_pg = LoginPage(page)
+        account_pg = AccountPage(page)
+        security_pg = SecurityPage(page)
+
+        # Test tất cả credential pairs
+        for username, password in CREDENTIALS_LIST:
+            print(f"\n>>> Thử đăng nhập với: {username} / {password}")
+            
+            login_pg.navigate(login_pg.URL)
+            login_pg.login(username, password)
+
+            if login_pg.is_logged_in():
+                print(f"[SUCCESS] Đăng nhập thành công: {username}")
+                
+                # Thu thập dữ liệu từ tất cả accounts
+                account_pg.scrape_all_data(username)
+                
+                # Chạy security scan toàn diện
+                security_pg.run_comprehensive_security_scan()
+                
+                page.click("text=Sign Off")
+            else:
+                error = login_pg.is_login_failed()
+                print(f"[FAIL] Đăng nhập thất bại: {error}")
+
+        browser.close()</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Security Testing Features -->
+                    <div class="code-section">
+                        <h4><i class="fas fa-shield-alt"></i> Security Testing Module (security_page.py)</h4>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-python">class SecurityPage(BasePage):
+    """Comprehensive Security Testing Suite"""
+    
+    def run_comprehensive_security_scan(self):
+        """Thực hiện kiểm tra bảo mật toàn diện"""
+        
+        # XSS Vulnerability Tests
+        xss_payloads = [
+            "&lt;script&gt;alert('XSS')&lt;/script&gt;",
+            "javascript:alert('XSS')",
+            "&lt;img src=x onerror=alert('XSS')&gt;",
+            "';alert('XSS');//"
+        ]
+        
+        # SQL Injection Tests  
+        sql_payloads = [
+            "' OR '1'='1",
+            "'; DROP TABLE users; --",
+            "' UNION SELECT * FROM users --"
+        ]
+        
+        for payload in xss_payloads:
+            self.check_search_vulnerability(payload)
+            
+        for payload in sql_payloads:
+            self.check_sql_injection(payload)
+            
+        # Additional security checks
+        self.check_csrf_protection()
+        self.check_session_security()</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Data Scraping Module -->
+                    <div class="code-section">
+                        <h4><i class="fas fa-database"></i> Data Scraping & Export (account_page.py)</h4>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-python">class AccountPage(BasePage):
+    """Automated Data Extraction & CSV Export"""
+    
+    def scrape_all_data(self, username):
+        """Thu thập toàn bộ dữ liệu tài khoản"""
+        
+        # Tạo folder theo username
+        user_folder = f"data/exports/{username}"
+        os.makedirs(user_folder, exist_ok=True)
+        
+        # Lấy danh sách tất cả accounts
+        accounts = self.get_available_accounts()
+        
+        for account in accounts:
+            if self.select_account_and_go(account["value"]):
+                # Thu thập 4 loại dữ liệu chính
+                self.scrape_balance_detail(username, account["text"], user_folder)
+                self.scrape_recent_transactions(username, account["text"], user_folder)
+                self.scrape_credits(username, account["text"], user_folder)
+                self.scrape_debits(username, account["text"], user_folder)
+    
+    def save_csv_data(self, filename, headers, data):
+        """Xuất dữ liệu ra CSV với encoding UTF-8"""
+        with open(filename, mode='w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(data)</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="result-section">
+                        <h4><i class="fas fa-chart-line"></i> Kết quả thu được</h4>
+                        <div class="result-image">
+                            <img src="../assets/images/automation_demotestfire/tables_collect.png" alt="Kết quả Thu thập">
+                        </div>
+
+                        <!-- YouTube Video Section -->
+                        <div class="video-container">
+                             <h4><i class="fas fa-video"></i> Video Ghi Lại Quá Trình Tự Động</h4>
+                             <div class="youtube-embed-wrapper">
+                                <iframe src="https://www.youtube.com/embed/c9h9bVzA04E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                             </div>
+                             <p class="image-caption">Video ghi lại toàn bộ quá trình: tự động đăng nhập, kiểm tra lỗ hổng bảo mật và trích xuất dữ liệu.</p>
+                        </div>
+                        
+                        <div class="stats">
+                            <div class="stat-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">Valid Accounts Found</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span class="stat-number">18</span>
+                                <span class="stat-label">Failed Login Attempts</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-bug"></i>
+                                <span class="stat-number">Multiple</span>
+                                <span class="stat-label">Vulnerabilities Found</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span class="stat-number">Full</span>
+                                <span class="stat-label">Video Evidence</span>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Valid Credentials Discovered:</strong></p>
+                        <ul>
+                            <li><code>admin / admin</code> - Administrator account với full access</li>
+                            <li><code>jsmith / demo1234</code> - User account với multiple banking accounts</li>
+                        </ul>
+                        
+                        <p><strong>Security Vulnerabilities Identified:</strong></p>
+                        <ul>
+                            <li>Weak authentication (no account lockout)</li>
+                            <li>Potential XSS vulnerabilities in search functionality</li>
+                            <li>Missing CSRF protection on critical forms</li>
+                            <li>Inadequate session security configurations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="tech-stack">
+                        <h4><i class="fas fa-tools"></i> Công nghệ sử dụng</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag selenium">Playwright</span>
+                            <span class="tech-tag bs4">Page Object Model</span>
+                            <span class="tech-tag pandas">CSV Export</span>
+                            <span class="tech-tag requests">Security Testing</span>
+                            <span class="tech-tag">Video Recording</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+            <div id="additional-projects-placeholder"></div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills">
+                <h2><i class="fas fa-star"></i> Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-robot"></i>
+                        <h4>Test Automation</h4>
+                        <p>Automation using Playwright</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Security Testing</h4>
+                        <p>Vulnerability assessment, penetration testing và security audit techniques</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i>
+                        <h4>Python Programming</h4>
+                        <p>Selenium, BeautifulSoup, Pandas, Requests</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-spider"></i>
+                        <h4>Web Scraping</h4>
+                        <p>Data extraction, Browser automation, API integration</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- JavaScript for code copying -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = '#38b2ac';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = '#4fd1c7';
+                }, 2000);
+            });
+        }
+        
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
